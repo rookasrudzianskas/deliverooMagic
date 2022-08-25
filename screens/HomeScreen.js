@@ -1,6 +1,9 @@
 import React, {useLayoutEffect} from 'react';
 import {Text, View, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
+import {useNetInfo} from "@react-native-community/netinfo";
+import Device from 'react-native-device-detection';
+
 import {
     ChevronDownIcon,
     UserIcon,
@@ -10,11 +13,17 @@ import {
 
 const HomeScreen = () => {
     const navigation = useNavigation();
+    const netInfo = useNetInfo();
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: 'Uizard Wifi Testing',
             headerShown: false
         })
+
+        // alert the information
+        alert('isConnected: ' + netInfo.isConnected, 'type: ' + netInfo.type, 'isInternetReachable: ' + netInfo.isInternetReachable);
+        alert('isIos', isIos(), 'isAndroid', isAndroid(), 'isTablet', isTablet(), 'isIphoneX', isIphoneX());
     }, [])
     return (
         <SafeAreaView>
@@ -28,6 +37,9 @@ const HomeScreen = () => {
                     <Text className="font-bold text-xl">Current Location
                         <ChevronDownIcon color="#00CCBB" size={20} />
                     </Text>
+
+                    {/*<Text>Type: {netInfo.type}</Text>*/}
+                    {/*<Text>Is Connected? {netInfo.isConnected.toString()}</Text>*/}
                 </View>
             </View>
         </SafeAreaView>
