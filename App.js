@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View>
-      <Text>This is uizard 🚀</Text>
+      <Text className="text-3xl font-bold">This is uizard 🚀</Text>
       <StatusBar style="auto" />
     </View>
   );
